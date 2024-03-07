@@ -9,7 +9,6 @@ POST http://localhost:8080/scores
 Content-Type: application/json
 
 {
-    "id_sesion": "c23de12f-983a-4e42-b7b1-02a82149858e",
     "palabras_acertadas": 10,
     "palabras_totales": 20,
     "tiempo_segundos": 60,

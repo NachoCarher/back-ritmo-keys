@@ -1,6 +1,8 @@
 const express = require('express');
 const scores = require('./scores');
 const crypto = require('crypto');
+const z = require('zod');
+const { validateScore } = require('./schemas/scores');
 
 const app = express();
 
@@ -24,27 +26,20 @@ app.get('/scores/:id_sesion', (req, res) => {
 });
 
 app.post('/scores', (req, res) => {
-    const {
-        id_sesion,
-        palabras_acertadas,
-        palabras_totales,
-        tiempo_segundos,
-        precision_porcentaje
-    } = req.body;
+    const result = validateScore(req.body);
+
+    if (result.error) {
+        return res.status(400).json({ error: JSON.parse(result.error.message) });
+    }
 
     const newScore = {
         id_sesion: crypto.randomUUID(),
-        palabras_acertadas,
-        palabras_totales,
-        tiempo_segundos,
-        precision_porcentaje
+        ...result.data
     };
 
     scores.push(newScore);
-
     res.status(201).json(newScore);
 });
-
 
 // Manejar error para rutas no encontradas (404) (a nivel sintáctico es un middleware)
 app.use((req, res) => {
