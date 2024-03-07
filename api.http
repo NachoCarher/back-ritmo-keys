@@ -1,0 +1,18 @@
+### Recuperar todas las scores
+GET http://localhost:8080/scores
+
+### Recuperar score por id
+GET http://localhost:8080/scores/e93ca12f-983a-4e42-b7b1-02a82149858e
+
+### Crear score
+POST http://localhost:8080/scores
+Content-Type: application/json
+
+{
+    "id_sesion": "c23de12f-983a-4e42-b7b1-02a82149858e",
+    "palabras_acertadas": 10,
+    "palabras_totales": 20,
+    "tiempo_segundos": 60,
+    "precision_porcentaje": 50.3
+}
+

@@ -1,0 +1,35 @@
+# Dependencias
+/node_modules
+
+# Archivos de configuración
+.env
+
+# Archivos generados
+/dist
+
+# Logs
+/logs
+
+# Archivos de respaldo
+*.bak
+
+# Archivos de caché
+*.cache
+
+# Archivos de compilación
+*.log
+*.pid
+
+# Archivos de entorno local
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Archivos de IDE
+.vscode
+.idea
+
+# Archivos de sistema operativo
+.DS_Store
+Thumbs.db

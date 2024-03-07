@@ -1,0 +1,38 @@
+[
+    {
+      "id_sesion": "c345de77-45f2-4a22-a483-8577c88d530d",
+      "palabras_acertadas": 50,
+      "palabras_totales": 60,
+      "tiempo_segundos": 120,
+      "precision_porcentaje": 83.33
+    },
+    {
+      "id_sesion": "e93ca12f-983a-4e42-b7b1-02a82149858e",
+      "palabras_acertadas": 75,
+      "palabras_totales": 80,
+      "tiempo_segundos": 180,
+      "precision_porcentaje": 93.75
+    },
+    {
+      "id_sesion": "f7b18db1-7d1d-4d9f-92d8-431e1eb5bf7c",
+      "palabras_acertadas": 40,
+      "palabras_totales": 50,
+      "tiempo_segundos": 90,
+      "precision_porcentaje": 80.0
+    },
+    {
+      "id_sesion": "a9e52f5d-829b-49cc-91d1-31752dc819f5",
+      "palabras_acertadas": 55,
+      "palabras_totales": 60,
+      "tiempo_segundos": 130,
+      "precision_porcentaje": 91.67
+    },
+    {
+      "id_sesion": "b7a49f2d-6a9f-4c5c-a9d7-44e9f17b15c4",
+      "palabras_acertadas": 70,
+      "palabras_totales": 80,
+      "tiempo_segundos": 160,
+      "precision_porcentaje": 87.5
+    }
+  ]
+  
