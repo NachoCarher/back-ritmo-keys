@@ -15,3 +15,11 @@ Content-Type: application/json
     "precision_porcentaje": 50.3
 }
 
+### Actualizar score
+PATCH http://localhost:8080/scores/e93ca12f-983a-4e42-b7b1-02a82149858e
+Content-Type: application/json
+
+{
+    "precision_porcentaje": 88.88
+}
+

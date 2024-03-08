@@ -11,6 +11,11 @@ function validateScore(object) {
     return scoreSchema.safeParse(object);
 }
 
+function validatePartialScore(object) {
+    return scoreSchema.partial().safeParse(object);
+}
+
 module.exports = {
-    validateScore
+    validateScore,
+    validatePartialScore
 };

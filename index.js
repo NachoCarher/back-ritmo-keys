@@ -2,7 +2,7 @@ const express = require('express');
 const scores = require('./scores');
 const crypto = require('crypto');
 const z = require('zod');
-const { validateScore } = require('./schemas/scores');
+const { validateScore, validatePartialScore } = require('./schemas/scores');
 
 const app = express();
 
@@ -22,7 +22,7 @@ app.get('/scores/:id_sesion', (req, res) => {
 
     if (score) return res.json(score);
 
-    res.status(404).send('Score no encontrado');
+    res.status(404).send('Score not found');
 });
 
 app.post('/scores', (req, res) => {
@@ -39,6 +39,27 @@ app.post('/scores', (req, res) => {
 
     scores.push(newScore);
     res.status(201).json(newScore);
+});
+
+app.patch('/scores/:id_sesion', (req, res) => {
+    const id = req.params.id_sesion;
+    const score = scores.find(score => score.id_sesion === id);
+
+    if (!score) return res.status(404).send('Score not  found');
+
+    const result = validatePartialScore(req.body);
+
+    if (result.error) {
+        return res.status(400).json({ error: JSON.parse(result.error.message) });
+    }
+
+    const updatedScore = {
+        ...score,
+        ...result.data
+    };
+
+    scores[scores.indexOf(score)] = updatedScore;
+    return res.json(updatedScore);
 });
 
 // Manejar error para rutas no encontradas (404) (a nivel sintáctico es un middleware)
