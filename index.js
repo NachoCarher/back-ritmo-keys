@@ -1,6 +1,7 @@
 const express = require('express');
 const scores = require('./scores');
 const crypto = require('crypto');
+const cors = require('cors');
 const z = require('zod');
 const { validateScore, validatePartialScore } = require('./schemas/scores');
 
@@ -8,6 +9,7 @@ const app = express();
 
 // Middleware para parsear el body de las peticiones
 app.use(express.json());
+app.use(cors());
 
 // Deshabilitar la cabecera X-Powered-By para ocultar la tecnología que usamos
 app.disable('x-powered-by');
