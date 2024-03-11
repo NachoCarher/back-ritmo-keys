@@ -1,14 +1,14 @@
-const express = require('express');
-const scores = require('./scores');
-const crypto = require('crypto');
-const cors = require('cors');
-const z = require('zod');
-const { validateScore, validatePartialScore } = require('./schemas/scores');
+import express, { json } from 'express';
+import { randomUUID } from 'crypto';
+import cors from 'cors';
+import { validateScore, validatePartialScore } from './schemas/scores.js';
+import { readJSON } from './utils.js';
 
+const scores = readJSON('./scores.json');
 const app = express();
 
 // Middleware para parsear el body de las peticiones
-app.use(express.json());
+app.use(json());
 app.use(cors());
 
 // Deshabilitar la cabecera X-Powered-By para ocultar la tecnología que usamos
@@ -35,7 +35,7 @@ app.post('/scores', (req, res) => {
     }
 
     const newScore = {
-        id_sesion: crypto.randomUUID(),
+        id_sesion: randomUUID(),
         ...result.data
     };
 

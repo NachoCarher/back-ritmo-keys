@@ -1,4 +1,4 @@
-const z = require('zod');
+import z from 'zod';
 
 const scoreSchema = z.object({
     palabras_acertadas: z.number().int().positive(),
@@ -7,15 +7,10 @@ const scoreSchema = z.object({
     precision_porcentaje: z.number().positive().min(0).max(100)
 });
 
-function validateScore(object) {
+export function validateScore(object) {
     return scoreSchema.safeParse(object);
 }
 
-function validatePartialScore(object) {
+export function validatePartialScore(object) {
     return scoreSchema.partial().safeParse(object);
 }
-
-module.exports = {
-    validateScore,
-    validatePartialScore
-};
