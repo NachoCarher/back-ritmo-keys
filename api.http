@@ -23,3 +23,5 @@ Content-Type: application/json
     "precision_porcentaje": 88.88
 }
 
+### Borrar score
+DELETE http://localhost:8080/scores/a9e52f5d-829b-49cc-91d1-31752dc819f5

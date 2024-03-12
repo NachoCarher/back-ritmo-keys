@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { readJSON } from "./utils.js";
+import { readJSON } from "../utils.js";
 import { randomUUID } from "crypto";
-import { validateScore, validatePartialScore } from './schemas/scores.js';
+import { validateScore, validatePartialScore } from '../schemas/scores.js';
 
 const scores = readJSON("./scores.json");
 export const scoresRouter = Router();
@@ -54,4 +54,15 @@ scoresRouter.patch("/:id_sesion", (req, res) => {
 
     scores[scores.indexOf(score)] = updatedScore;
     return res.json(updatedScore);
+});
+
+scoresRouter.delete("/:id_sesion", (req, res) => {
+  const id = req.params.id_sesion;
+  const score = scores.find((score) => score.id_sesion === id);
+
+  if (!score) return res.status(404).send("Score not found");
+
+  scores.splice(scores.indexOf(score), 1);
+
+  return res.json({ message: "Score deleted" });
 });
